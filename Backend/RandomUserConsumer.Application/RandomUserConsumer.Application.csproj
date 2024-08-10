@@ -8,12 +8,26 @@
 
     <ItemGroup>
       <Compile Remove="Class1.cs" />
+      <Compile Remove="User\**" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\RandomUserConsumer.Domain\RandomUserConsumer.Domain.csproj" />
+      <ProjectReference Include="..\RandomUserConsumer.Infrastructure\RandomUserConsumer.Infrastructure.csproj" />
       <ProjectReference Include="..\Shared\RandomuserConsumer.Communication\RandomuserConsumer.Communication.csproj" />
       <ProjectReference Include="..\Shared\RandomUserConsumer.Exceptions\RandomUserConsumer.Exceptions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="User\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="User\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Interfaces\User\" />
     </ItemGroup>
 
 </Project>
