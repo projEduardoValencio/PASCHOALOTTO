@@ -1,6 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using RandomUserConsumer.Domain.Interfaces;
+using RandomUserConsumer.Domain.Interfaces.Repositories.Account;
+using RandomUserConsumer.Domain.Interfaces.Repositories.Address;
+using RandomUserConsumer.Domain.Interfaces.Repositories.Contact;
+using RandomUserConsumer.Domain.Interfaces.Repositories.Coordinate;
+using RandomUserConsumer.Domain.Interfaces.Repositories.Login;
 using RandomUserConsumer.Domain.Interfaces.Repositories.User;
 using RandomUserConsumer.Infrastructure.DataAccess;
 using RandomUserConsumer.Infrastructure.Repositories;
@@ -38,5 +43,20 @@ public static class DependencyInjection
     {
         services.AddScoped<IUserWriteRepository, UserRepository>();
         services.AddScoped<IUserReadOnlyRepository, UserRepository>();
+        
+        services.AddScoped<IAccountWriteRepository, AccountRepository>();
+        services.AddScoped<IAccountReadOnlyRepository, AccountRepository>();
+        
+        services.AddScoped<IAddressWriteRepository, AddressRepository>();
+        services.AddScoped<IAddressReadOnlyRepository, AddressRepository>();
+        
+        services.AddScoped<IContactWriteRepository, ContactRepository>();
+        services.AddScoped<IContactReadOnlyRepository, ContactRepository>();
+        
+        services.AddScoped<ICoordinateWriteRepository, CoordinateRepository>();
+        services.AddScoped<ICoordinateReadOnlyRepository, CoordinateRepository>();
+        
+        services.AddScoped<ILoginWriteRepository, LoginRepository>();
+        services.AddScoped<ILoginReadOnlyRepository, LoginRepository>();
     }
 }

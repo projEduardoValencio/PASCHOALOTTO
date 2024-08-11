@@ -39,20 +39,16 @@ namespace RandomUserConsumer.Infrastructure.Migrations
                     b.Property<int>("IdUser")
                         .HasColumnType("integer");
 
-                    b.Property<int>("LoginId")
-                        .HasColumnType("integer");
-
                     b.Property<DateTime>("RegistrationDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("LoginId");
+                    b.HasIndex("IdLogin")
+                        .IsUnique();
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("IdUser")
+                        .IsUnique();
 
                     b.ToTable("Accounts");
                 });
@@ -192,9 +188,6 @@ namespace RandomUserConsumer.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("text");
@@ -205,7 +198,8 @@ namespace RandomUserConsumer.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("IdUser")
+                        .IsUnique();
 
                     b.ToTable("Logins");
                 });
@@ -254,14 +248,14 @@ namespace RandomUserConsumer.Infrastructure.Migrations
             modelBuilder.Entity("RandomUserConsumer.Domain.Entities.Account", b =>
                 {
                     b.HasOne("RandomUserConsumer.Domain.Entities.Login", "Login")
-                        .WithMany()
-                        .HasForeignKey("LoginId")
+                        .WithOne("Account")
+                        .HasForeignKey("RandomUserConsumer.Domain.Entities.Account", "IdLogin")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("RandomUserConsumer.Domain.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                        .WithOne("Account")
+                        .HasForeignKey("RandomUserConsumer.Domain.Entities.Account", "IdUser")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -295,8 +289,8 @@ namespace RandomUserConsumer.Infrastructure.Migrations
             modelBuilder.Entity("RandomUserConsumer.Domain.Entities.Login", b =>
                 {
                     b.HasOne("RandomUserConsumer.Domain.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                        .WithOne("Login")
+                        .HasForeignKey("RandomUserConsumer.Domain.Entities.Login", "IdUser")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -323,9 +317,21 @@ namespace RandomUserConsumer.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("RandomUserConsumer.Domain.Entities.Login", b =>
+                {
+                    b.Navigation("Account")
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("RandomUserConsumer.Domain.Entities.User", b =>
                 {
+                    b.Navigation("Account")
+                        .IsRequired();
+
                     b.Navigation("Contact")
+                        .IsRequired();
+
+                    b.Navigation("Login")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

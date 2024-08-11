@@ -2,5 +2,5 @@
 
 public interface IReadSearchable<T>
 {
-    Task<List<T>> Search(int page, int pageSize, string search);
+    Task<List<T>> Search(int page, int pageSize, string? search);
 }

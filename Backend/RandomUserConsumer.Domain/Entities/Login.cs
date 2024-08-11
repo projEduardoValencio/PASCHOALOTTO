@@ -12,4 +12,6 @@ public class Login : EntityBase
     
     public int IdUser { get; set; }
     public virtual User User { get; set; }
+    
+    public virtual Account Account { get; set; }
 }

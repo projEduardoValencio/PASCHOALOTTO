@@ -11,5 +11,10 @@ public class LoginConfiguration : IEntityTypeConfiguration<Login>
     {
         builder.Property(l => l.Id)
             .ValueGeneratedOnAdd();
+        
+        builder
+            .HasOne(l => l.User)
+            .WithOne(u => u.Login)
+            .HasForeignKey<Login>(l=> l.IdUser);
     }
 }

@@ -113,15 +113,14 @@ namespace RandomUserConsumer.Infrastructure.Migrations
                     Sha1 = table.Column<string>(type: "text", nullable: false),
                     Sha256 = table.Column<string>(type: "text", nullable: false),
                     IdUser = table.Column<int>(type: "integer", nullable: false),
-                    UserId = table.Column<int>(type: "integer", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Logins", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Logins_Users_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Logins_Users_IdUser",
+                        column: x => x.IdUser,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -135,37 +134,37 @@ namespace RandomUserConsumer.Infrastructure.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     RegistrationDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     IdUser = table.Column<int>(type: "integer", nullable: false),
-                    UserId = table.Column<int>(type: "integer", nullable: false),
                     IdLogin = table.Column<int>(type: "integer", nullable: false),
-                    LoginId = table.Column<int>(type: "integer", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Accounts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Accounts_Logins_LoginId",
-                        column: x => x.LoginId,
+                        name: "FK_Accounts_Logins_IdLogin",
+                        column: x => x.IdLogin,
                         principalTable: "Logins",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Accounts_Users_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Accounts_Users_IdUser",
+                        column: x => x.IdUser,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Accounts_LoginId",
+                name: "IX_Accounts_IdLogin",
                 table: "Accounts",
-                column: "LoginId");
+                column: "IdLogin",
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Accounts_UserId",
+                name: "IX_Accounts_IdUser",
                 table: "Accounts",
-                column: "UserId");
+                column: "IdUser",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Contacts_IdUser",
@@ -180,9 +179,10 @@ namespace RandomUserConsumer.Infrastructure.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Logins_UserId",
+                name: "IX_Logins_IdUser",
                 table: "Logins",
-                column: "UserId");
+                column: "IdUser",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_IdAddress",

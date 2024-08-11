@@ -16,4 +16,6 @@ public class User : EntityBase
     public virtual Address Address { get; set; }
     
     public virtual Contact Contact { get; set; }
+    public virtual Login Login { get; set; }
+    public virtual Account Account { get; set; }
 }

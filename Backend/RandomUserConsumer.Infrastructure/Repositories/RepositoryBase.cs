@@ -54,5 +54,5 @@ public abstract class RepositoryBase<T, IT> : IWriteOnly<T,IT>, IReadOnly<T,IT> 
         return entity;
     }
 
-    public abstract Task<List<T>> Search(int page, int pageSize, string search);
+    public abstract Task<List<T>> Search(int page, int pageSize, string? search);
 }

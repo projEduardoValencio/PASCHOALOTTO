@@ -6,11 +6,6 @@ public class ResponseRandomUserGereted
 {
     public List<Result> Results { get; set; }
 
-    public static ResponseRandomUserGereted FromJson(string json)
-    {
-        return JsonSerializer.Deserialize<ResponseRandomUserGereted>(json);
-    }
-
     public class Result
     {
         public string Gender { get; set; }
@@ -40,9 +35,22 @@ public class ResponseRandomUserGereted
         public string City { get; set; }
         public string State { get; set; }
         public string Country { get; set; }
-        public int Postcode { get; set; }
+        public object Postcode { get; set; }
         public Coordinates Coordinates { get; set; }
         public Timezone Timezone { get; set; }
+
+        public string getPostCode()
+        {
+            switch (Type.GetTypeCode(Postcode.GetType()))
+            {
+                case TypeCode.String:
+                    return (string)Postcode;
+                case TypeCode.Int32:
+                    return ((int)Postcode).ToString();
+                default:
+                    return String.Empty;
+            }
+        }
     }
 
     public class Street

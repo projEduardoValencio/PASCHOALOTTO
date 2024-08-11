@@ -4,6 +4,6 @@ namespace RandomUserConsumer.Application.Interfaces;
 
 public interface IUserUserCase
 {
-    public Task<List<ResponseUserItemList>> ListUsers(int count, int page, string? search);
+    public Task<List<ResponseUserItemList>> ListUsers(int page, int pageSize, string? search);
     public Task<ResponseUserGenerated> GenerateUser();
 }
