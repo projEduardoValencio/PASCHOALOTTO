@@ -1,9 +1,8 @@
 using RandomUserConsumer.Domain.Entities;
+using RandomUserConsumer.Domain.Interfaces.Generics.Read;
 
-namespace RandomUserConsumer.Domain.Repositories;
+namespace RandomUserConsumer.Domain.Interfaces.Repositories.User;
 
-public interface IUserReadOnlyRepository
+public interface IUserReadOnlyRepository : IReadOnly<Entities.User, int>
 {
-    public Task<List<Domain.Entities.User>> ListUsers(int count, int page, string? search);
-    public Task<User?> GetUserById(int id);
 }

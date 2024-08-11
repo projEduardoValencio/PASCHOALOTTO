@@ -1,8 +1,7 @@
-using RandomUserConsumer.Domain.Entities;
+using RandomUserConsumer.Domain.Interfaces.Generics.Write;
 
-namespace RandomUserConsumer.Domain.Repositories;
+namespace RandomUserConsumer.Domain.Interfaces.Repositories.User;
 
-public interface IUserWriteRepository
+public interface IUserWriteRepository : IWriteOnly<Entities.User, int>
 {
-    public Task<User> AddUser(User user);
 }

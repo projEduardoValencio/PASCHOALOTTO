@@ -1,8 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using RandomUserConsumer.Domain.Interfaces;
-using RandomUserConsumer.Domain.Repositories;
+using RandomUserConsumer.Domain.Interfaces.Repositories.User;
 using RandomUserConsumer.Infrastructure.DataAccess;
 using RandomUserConsumer.Infrastructure.Repositories;
 

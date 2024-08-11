@@ -2,7 +2,8 @@ using RandomUserConsumer.Application.Interfaces;
 using RandomUserConsumer.Application.Provider;
 using RandomuserConsumer.Communication.Responses.RandomUserApi;
 using RandomuserConsumer.Communication.Responses.User;
-using RandomUserConsumer.Domain.Repositories;
+using RandomUserConsumer.Domain.Interfaces.Repositories.Address;
+using RandomUserConsumer.Domain.Interfaces.Repositories.User;
 using RandomUserConsumer.Domain.Types;
 
 namespace RandomUserConsumer.Application.UseCases.User;
@@ -32,14 +33,14 @@ public class UserUseCase : IUserUserCase
         
         entityUser.IdAddress = 1;
         
-        entityUser = await _writeRepository.AddUser(entityUser);
+        entityUser = await _writeRepository.Add(entityUser);
         
         return new ResponseUserGenerated(entityUser);
     }
 
     public async Task<List<ResponseUserItemList>> ListUsers(int count, int page, string? search)
     {
-        List<Domain.Entities.User> result = await _readOnlyRepository.ListUsers(count, page, search);
+        List<Domain.Entities.User> result = await _readOnlyRepository.Search(count, page, search);
         return result.Select(user => new ResponseUserItemList(user, user.Address)).ToList();
     }
 }

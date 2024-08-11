@@ -1,3 +1,4 @@
+using RandomUserConsumer.Domain.Interfaces.Generics.Write;
 using RandomUserConsumer.Domain.Types;
 
 namespace RandomUserConsumer.Domain.Entities;

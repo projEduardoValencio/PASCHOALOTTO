@@ -12,6 +12,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\RandomUserConsumer.Domain\RandomUserConsumer.Domain.csproj" />
+      <ProjectReference Include="..\Shared\RandomUserConsumer.Exceptions\RandomUserConsumer.Exceptions.csproj" />
     </ItemGroup>
 
     <ItemGroup>
