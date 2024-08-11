@@ -1,4 +1,4 @@
-using RandomuserConsumer.Communication.Responses.RandomUserApi;
+using RandomuserConsumer.Communication.Responses.User;
 
 namespace RandomUserConsumer.Application.Interfaces;
 

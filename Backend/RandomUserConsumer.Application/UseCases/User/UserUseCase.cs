@@ -1,5 +1,5 @@
 using RandomUserConsumer.Application.Interfaces;
-using RandomuserConsumer.Communication.Responses.RandomUserApi;
+using RandomuserConsumer.Communication.Responses.User;
 using RandomUserConsumer.Domain.Repositories;
 
 namespace RandomUserConsumer.Application.UseCases.User;

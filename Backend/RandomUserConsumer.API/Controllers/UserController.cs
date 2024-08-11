@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RandomUserConsumer.Application.Interfaces;
 using RandomuserConsumer.Communication.Responses.RandomUserApi;
+using RandomuserConsumer.Communication.Responses.User;
 using RandomUserConsumer.Domain.Entities;
 
 namespace PASCHOALOTTO_Random_User_Consumer.Controllers;
@@ -18,7 +19,7 @@ public class UserController : ControllerBase
     }
 
     [HttpGet("generate")]
-    [ProducesResponseType(typeof(ResponseRandomUserGereted), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ResponseUserGenerated), StatusCodes.Status200OK)]
     public IActionResult GenerateUser()
     {
         return Ok(new ResponseRandomUserGereted());

@@ -1,9 +1,7 @@
-using Microsoft.Extensions.FileProviders;
 using Microsoft.OpenApi.Models;
 using PASCHOALOTTO_Random_User_Consumer.Utils;
 using RandomUserConsumer.Application;
 using RandomUserConsumer.Infrastructure;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,13 +22,8 @@ builder.Services.AddInfrastructureServices(Env.DatabaseEnvLoad(builder.Environme
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline. (Removed to show on presentation)
-// if (app.Environment.IsDevelopment())
-// {
-// Documentation configuration
 app.UseSwagger();
 app.UseSwaggerUI();
-// }
 
 // Make easy to test
 //app.UseHttpsRedirection();
@@ -39,6 +32,7 @@ app.UseAuthorization();
 app.UsePathBase("/api/v1");
 app.MapControllers();
 
+#region SPA configuration
 // It's possible use Angular as SPA
 // string angularFiles = Path.Combine(Directory.GetCurrentDirectory(),
 //     "../../Frontend/RandomUserConsumer.Front/dist/paschoalotto-random-user-consumer.front/browser"
@@ -49,5 +43,6 @@ app.MapControllers();
 //     FileProvider = new PhysicalFileProvider(angularFiles),
 //     RequestPath = ""
 // });
+#endregion
 
 app.Run();

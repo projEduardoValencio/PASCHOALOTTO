@@ -1,12 +1,10 @@
-﻿using RandomuserConsumer.Communication.Responses.Generics;
-using RandomUserConsumer.Domain.Entities;
+﻿using RandomUserConsumer.Domain.Entities;
 using RandomUserConsumer.Domain.Types;
 
-namespace RandomuserConsumer.Communication.Responses.RandomUserApi;
+namespace RandomuserConsumer.Communication.Responses.Generics;
 
-public class ResponseUserItemList
+public class ResponseUser
 {
-    
     private GenderType _gender = GenderType.Other;
     
     public string Name { get; set; } = String.Empty;
@@ -16,8 +14,8 @@ public class ResponseUserItemList
     public string PictureUrl { get; set; } = string.Empty;
 
     public ResponseAddress Address { get; set; }
-
-    public ResponseUserItemList(User user)
+    
+    public ResponseUser(RandomUserConsumer.Domain.Entities.User user)
     {
         Name = user.Name;
         Birthday = user.Birthday;
@@ -26,7 +24,7 @@ public class ResponseUserItemList
         PictureUrl = user.PictureUrl;
     }
     
-    public ResponseUserItemList(User user, Address address) : this(user)
+    public ResponseUser(RandomUserConsumer.Domain.Entities.User user, Address address) : this(user)
     {
         Address = new ResponseAddress(address);
     }
