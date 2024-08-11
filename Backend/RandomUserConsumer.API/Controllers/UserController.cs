@@ -20,9 +20,9 @@ public class UserController : ControllerBase
 
     [HttpGet("generate")]
     [ProducesResponseType(typeof(ResponseUserGenerated), StatusCodes.Status200OK)]
-    public IActionResult GenerateUser()
+    public async Task<IActionResult> GenerateUser([FromServices] IUserUserCase userUseCase)
     {
-        return Ok(new ResponseRandomUserGereted());
+        return Ok(await userUseCase.GenerateUser());
     }
     
     [HttpGet("list")]

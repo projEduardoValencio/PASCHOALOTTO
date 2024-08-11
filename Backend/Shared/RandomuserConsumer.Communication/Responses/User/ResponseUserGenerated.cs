@@ -8,6 +8,9 @@ public class ResponseUserGenerated : ResponseUser
 {
     public ContactResponse Contact { get; set; }
     public AccountResponse Account { get; set; }
+
+    public ResponseUserGenerated(RandomUserConsumer.Domain.Entities.User user) : base(user)
+    { }
     
     public ResponseUserGenerated(
         RandomUserConsumer.Domain.Entities.User user,

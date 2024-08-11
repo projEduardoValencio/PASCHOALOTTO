@@ -4,5 +4,5 @@ namespace RandomUserConsumer.Domain.Repositories;
 
 public interface IUserWriteRepository
 {
-    public Task AddUser(User user);
+    public Task<User> AddUser(User user);
 }

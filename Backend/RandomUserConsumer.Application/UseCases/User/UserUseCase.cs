@@ -1,6 +1,9 @@
 using RandomUserConsumer.Application.Interfaces;
+using RandomUserConsumer.Application.Provider;
+using RandomuserConsumer.Communication.Responses.RandomUserApi;
 using RandomuserConsumer.Communication.Responses.User;
 using RandomUserConsumer.Domain.Repositories;
+using RandomUserConsumer.Domain.Types;
 
 namespace RandomUserConsumer.Application.UseCases.User;
 
@@ -15,9 +18,23 @@ public class UserUseCase : IUserUserCase
         _readOnlyRepository = readOnlyRepository;
     }
 
-    public string GenerateUser()
+    public async Task<ResponseUserGenerated> GenerateUser()
     {
-        return "User generated";
+        ResponseRandomUserGereted generatedUser = await RandomUserApiProvider.GetRandomUser<ResponseRandomUserGereted>();
+        Domain.Entities.User entityUser = new Domain.Entities.User()
+        {
+            Name = generatedUser.Results.First().Name.Title.ToUpper(),
+            Birthday = generatedUser.Results.First().Dob.Date,
+            Gender = new GenderType(generatedUser.Results.First().Gender),
+            Nationality = generatedUser.Results.First().Nat.ToUpper(),
+            PictureUrl = generatedUser.Results.First().Picture.Large,
+        };
+        
+        entityUser.IdAddress = 1;
+        
+        entityUser = await _writeRepository.AddUser(entityUser);
+        
+        return new ResponseUserGenerated(entityUser);
     }
 
     public async Task<List<ResponseUserItemList>> ListUsers(int count, int page, string? search)

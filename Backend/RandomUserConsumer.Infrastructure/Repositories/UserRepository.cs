@@ -31,8 +31,10 @@ public class UserRepository : RepositoryBase, IUserWriteRepository, IUserReadOnl
         return  await _context.Users.FindAsync(id);
     }
     
-    public async Task AddUser(User user)
+    public async Task<User> AddUser(User user)
     {
-        await _context.Users.AddAsync(user);
+        var createdUser = await _context.Users.AddAsync(user);
+        await _context.SaveChangesAsync();
+        return createdUser.Entity;
     }
 }
