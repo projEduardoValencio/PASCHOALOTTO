@@ -61,13 +61,13 @@ public class UserUseCase : IUserUserCase
             IdAddress = address.Id
         });
         
-        await _contactService.rigisterContact(user.Id, generatedUser);
+        Contact contact = await _contactService.rigisterContact(user.Id, generatedUser);
         
         Login login = await _loginService.rigisterLogin(user.Id, generatedUser);
         
-        await _accountService.rigisterAccount(user.Id, login.Id, generatedUser);
+        Account account = await _accountService.rigisterAccount(user.Id, login.Id, generatedUser);
         
-        return new ResponseUserGenerated(user);
+        return new ResponseUserGenerated(user, address, contact, login, account);
     }
 
     public async Task<int> CountUsers(string? search)
