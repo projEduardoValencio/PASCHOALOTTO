@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using RandomUserConsumer.Application.Interfaces;
+using RandomuserConsumer.Communication.Request.User;
 using RandomuserConsumer.Communication.Responses.Generics;
 using RandomuserConsumer.Communication.Responses.User;
 
@@ -45,6 +46,18 @@ public class UserController : ControllerBase
         );
         
         return Ok(result);
+    }
+    #endregion
+
+    #region Register User Request
+    [HttpPost("register")]
+    [ProducesResponseType(typeof(ResponseUserGenerated), StatusCodes.Status201Created)]
+    public async Task<IActionResult> RegisterUser(
+        [FromServices] IUserUserCase userUseCase,
+        [FromBody] RequestRegisterUser dto
+    )
+    {
+        return Ok(await userUseCase.RegisterUser(dto));
     }
     #endregion
 }

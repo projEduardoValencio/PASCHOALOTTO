@@ -2,7 +2,6 @@
 
 public class RequestRegisterUser
 {
-    public int Id { get; set; }
     public string Name { get; set; }
     public string Gender { get; set; }
     public string Nationality { get; set; }
@@ -24,6 +23,7 @@ public class RequestRegisterUser
         public string Uuid { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public string Salt { get; set; }
     }
 
     public class UserAccount
@@ -40,5 +40,8 @@ public class RequestRegisterUser
         public string State { get; set; }
         public string ZipCode { get; set; }
         public string Country { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+        
     }
 }

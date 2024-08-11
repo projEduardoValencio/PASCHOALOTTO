@@ -1,4 +1,5 @@
-﻿using RandomuserConsumer.Communication.Responses.RandomUserApi;
+﻿using RandomuserConsumer.Communication.Request.User;
+using RandomuserConsumer.Communication.Responses.RandomUserApi;
 using RandomUserConsumer.Domain.Entities;
 using RandomUserConsumer.Domain.Interfaces.Repositories.Coordinate;
 
@@ -13,7 +14,7 @@ public class CoordinateService
         _coordinateWriteRepository = addressWriteRepository;
     }
     
-    public async Task<Coordinate> rigisterCoordinate(int idAddress, ResponseRandomUserGereted userGereted)
+    public async Task<Coordinate> RigisterCoordinate(int idAddress, ResponseRandomUserGereted userGereted)
     {
         double latitude, logitude;
         if (!double.TryParse(userGereted.Results.First().Location.Coordinates.Latitude, out latitude))
@@ -31,6 +32,18 @@ public class CoordinateService
             IdAddress = idAddress,
             Latitude = latitude,
             Longitude = logitude,
+        };
+        
+        return await _coordinateWriteRepository.Add(entityCoordinate);
+    }
+    
+    public async Task<Coordinate> RigisterCoordinate(int idAddress, RequestRegisterUser dto)
+    {
+        Coordinate entityCoordinate = new Coordinate()
+        {
+            IdAddress = idAddress,
+            Latitude = dto.Address.Latitude,
+            Longitude = dto.Address.Longitude,
         };
         
         return await _coordinateWriteRepository.Add(entityCoordinate);
