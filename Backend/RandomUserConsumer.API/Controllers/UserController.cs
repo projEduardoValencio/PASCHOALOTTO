@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RandomUserConsumer.Application.Interfaces;
-using RandomuserConsumer.Communication.Responses.RandomUserApi;
+using RandomuserConsumer.Communication.Responses.Generics;
 using RandomuserConsumer.Communication.Responses.User;
-using RandomUserConsumer.Domain.Entities;
 
 namespace PASCHOALOTTO_Random_User_Consumer.Controllers;
 
@@ -24,10 +23,10 @@ public class UserController : ControllerBase
     {
         return Ok(await userUseCase.GenerateUser());
     }
-    
+
+    #region User List Request
     [HttpGet("list/{page}")]
-    [ProducesResponseType(typeof(List<ResponseUserItemList>), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(String), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(List<ResponseUserList>), StatusCodes.Status200OK)]
     [ProducesErrorResponseType(typeof(String))]
     public async Task<IActionResult> ListUsers(
         [FromServices] IUserUserCase userUseCase,
@@ -36,9 +35,16 @@ public class UserController : ControllerBase
         [FromQuery] string? search = null
         )
     {
-        List<ResponseUserItemList> result = 
-            await userUseCase.ListUsers(page <= 0 ? 1 : page, pageSize, null);
+        page = page <= 0? 1 : page;
+        ResponseUserList result = new ResponseUserList(
+            await userUseCase.ListUsers(page, pageSize, search),
+            page,
+            pageSize,
+            await userUseCase.CountUsers(search),
+            search?? string.Empty
+        );
         
         return Ok(result);
     }
+    #endregion
 }

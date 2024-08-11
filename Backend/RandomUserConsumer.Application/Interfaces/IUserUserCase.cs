@@ -6,4 +6,5 @@ public interface IUserUserCase
 {
     public Task<List<ResponseUserItemList>> ListUsers(int page, int pageSize, string? search);
     public Task<ResponseUserGenerated> GenerateUser();
+    public Task<int> CountUsers(string? search);
 }

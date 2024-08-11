@@ -29,7 +29,6 @@ app.UseSwaggerUI();
 //app.UseHttpsRedirection();
 
 app.UseAuthorization();
-app.UsePathBase("/api/v1");
 app.MapControllers();
 
 #region SPA configuration

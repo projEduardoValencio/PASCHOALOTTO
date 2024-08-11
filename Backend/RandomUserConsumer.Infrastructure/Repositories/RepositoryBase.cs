@@ -11,7 +11,7 @@ namespace RandomUserConsumer.Infrastructure.Repositories;
 public abstract class RepositoryBase<T, IT> : IWriteOnly<T,IT>, IReadOnly<T,IT> where T : EntityBase
 {
     private readonly RandomUserConsumerDbContext _context;
-    private readonly DbSet<T> _dbSet;
+    protected readonly DbSet<T> _dbSet;
 
     protected RepositoryBase(RandomUserConsumerDbContext context)
     {
@@ -55,4 +55,6 @@ public abstract class RepositoryBase<T, IT> : IWriteOnly<T,IT>, IReadOnly<T,IT> 
     }
 
     public abstract Task<List<T>> Search(int page, int pageSize, string? search);
+
+    public abstract Task<int> Count(string? search);
 }

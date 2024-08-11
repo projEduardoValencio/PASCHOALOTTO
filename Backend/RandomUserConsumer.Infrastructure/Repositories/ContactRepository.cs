@@ -6,14 +6,14 @@ namespace RandomUserConsumer.Infrastructure.Repositories;
 
 public class ContactRepository : RepositoryBase<Contact, int>, IContactWriteRepository, IContactReadOnlyRepository
 {
-    private readonly RandomUserConsumerDbContext _context;
-
-    public ContactRepository(RandomUserConsumerDbContext context) : base(context)
+    public ContactRepository(RandomUserConsumerDbContext context) : base(context) { }
+    
+    public override Task<List<Contact>> Search(int page, int pageSize, string search)
     {
-        _context = context;
+        throw new NotImplementedException();
     }
 
-    public override Task<List<Contact>> Search(int page, int pageSize, string search)
+    public override Task<int> Count(string? search)
     {
         throw new NotImplementedException();
     }

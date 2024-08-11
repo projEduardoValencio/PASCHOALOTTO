@@ -4,7 +4,6 @@ using RandomUserConsumer.Application.Services;
 using RandomuserConsumer.Communication.Responses.RandomUserApi;
 using RandomuserConsumer.Communication.Responses.User;
 using RandomUserConsumer.Domain.Entities;
-using RandomUserConsumer.Domain.Interfaces.Repositories.Address;
 using RandomUserConsumer.Domain.Interfaces.Repositories.User;
 using RandomUserConsumer.Domain.Types;
 
@@ -69,6 +68,11 @@ public class UserUseCase : IUserUserCase
         await _accountService.rigisterAccount(user.Id, login.Id, generatedUser);
         
         return new ResponseUserGenerated(user);
+    }
+
+    public async Task<int> CountUsers(string? search)
+    {
+        return await _readOnlyRepository.Count(search);
     }
 
     public async Task<List<ResponseUserItemList>> ListUsers(int page, int pageSize, string? search)

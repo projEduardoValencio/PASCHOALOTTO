@@ -6,14 +6,14 @@ namespace RandomUserConsumer.Infrastructure.Repositories;
 
 public class AccountRepository : RepositoryBase<Account, int>, IAccountWriteRepository, IAccountReadOnlyRepository
 {
-    private readonly RandomUserConsumerDbContext _context;
-
-    public AccountRepository(RandomUserConsumerDbContext context) : base(context)
-    {
-        _context = context;
-    }
+    public AccountRepository(RandomUserConsumerDbContext context) : base(context) { }
 
     public override Task<List<Account>> Search(int page, int pageSize, string search)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override Task<int> Count(string? search)
     {
         throw new NotImplementedException();
     }
