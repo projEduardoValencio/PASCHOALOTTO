@@ -6,12 +6,11 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class UserService {
-  //TODO: Ajustar url
-  private apiUrl = 'https://randomuser.me/api/'; // Altere para a URL da sua API
+  private apiUrl = 'http://localhost:5208'; // Altere para a URL da sua API
 
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}?results=10`); // Ajuste os parâmetros conforme necessário
+  searchUsers(page:number, pageSize:number, search:string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/user/list/${page}?pageSize=${pageSize}&search=${search}`); // Ajuste os parâmetros conforme necessário
   }
 }

@@ -5,19 +5,25 @@
   </button>
 
   <div class="flex flex-row w-full gap-3">
-    <input class="input-search" placeholder="Search Name"/>
-    <button class="rounded flex items-center justify-center w-12 h-12 right-2 top-2"
+    <input class="input-search" placeholder="Search Name" [(ngModel)]="search"
+           (ngModelChange)="callbackSearch()"
+           [ngModelOptions]="{standalone: true}"/>
+    <button (click)="callbackSearch()"
+            class="rounded flex items-center justify-center w-12 h-12 right-2 top-2"
             style="background: #333333" title="Search User">
       <mat-icon color="white" fontIcon="search"/>
     </button>
-    <button class="rounded flex items-center justify-center w-12 h-12 right-2 top-2"
+    <button (click)="callbackRefresh()"
+            class="rounded flex items-center justify-center w-12 h-12 right-2 top-2"
             style="background: #333333" title="Refresh List">
       <mat-icon color="white" fontIcon="refresh"/>
     </button>
-
   </div>
 
-  <table mat-table class="user-table">
+  <div *ngIf="isLoading">Loading ...</div>
+  <div *ngIf="isError">Error!</div>
+
+  <table *ngIf="!isError && !isLoading" mat-table class="user-table">
     <thead class="user-table-thead">
     <tr>
       <th width="70px"></th>
@@ -36,8 +42,8 @@
       <td class="capitalize text-center">{{ user.name.toLowerCase() }}</td>
       <td class="max-sm:hidden">{{ user.contact.email }}</td>
       <td class="max-md:hidden">{{ user.contact.phoneNumber }}</td>
-      <td class="max-xl:hidden">{{ getBirthdayDay(user.birthday) }}</td>
-      <td class="max-sm:hidden">{{ getAge(user.birthday) }}</td>
+      <td class="max-xl:hidden">{{ DateUtils.getDateFormated(user.birthday) }}</td>
+      <td class="max-sm:hidden">{{ DateUtils.getAge(user.birthday) }}</td>
       <td class="gap-2">
         <button (click)="goToUserDetail(user)">
           <mat-icon fontIcon="info"/>
@@ -53,9 +59,13 @@
     </tbody>
   </table>
 
-  <div class="pagination flex flex-row gap-3">
-    <button class="px-4 rounded" style="background: #383838" (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+  <div *ngIf="!isError && !isLoading" class="pagination flex flex-row gap-3">
+    <button class="px-4 rounded" style="background: #383838" (click)="previousPage()" [disabled]="currentPage === 1">
+      Previous
+    </button>
     <span>Page {{ currentPage }} of {{ totalPages }}</span>
-    <button class="px-4 rounded" style="background: #383838" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+    <button class="px-4 rounded" style="background: #383838" (click)="nextPage()"
+            [disabled]="currentPage === totalPages">Next
+    </button>
   </div>
 </div>
