@@ -161,4 +161,8 @@ export class UserTableComponent implements OnInit {
       }
     });
   }
+
+  gotToUserReport() {
+    this.router.navigate(['/user/report']);
+  }
 }

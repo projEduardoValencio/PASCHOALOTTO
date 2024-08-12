@@ -1,0 +1,44 @@
+@import "styles";
+
+.report-grid{
+  @apply grid grid-cols-2 grid-flow-row gap-16 px-10 py-10
+  max-lg:grid-cols-1
+}
+
+@media print {
+  .page-content {
+    page-break-inside: avoid;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .main-component{
+    position: absolute;
+    overflow: visible;
+  }
+
+  .report-grid{
+    @apply grid grid-cols-1 p-0
+  }
+
+  paschoalotto-user-report-card{
+    page-break-before: always;
+  }
+
+  #teste{
+    @apply flex flex-col
+  }
+
+  .no-print {
+    display: none;
+  }
+
+  @page {
+    size: auto;
+    margin: 0;
+  }
+}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {RouterModule, RouterOutlet} from '@angular/router';
+import {Router, RouterModule, RouterOutlet} from '@angular/router';
 import {HeaderComponent} from "./shared/components/header/header.component";
 import {FooterComponent} from "./shared/components/footer/footer.component";
 import {UserService} from "./core/providers/user/user.service";
@@ -9,6 +9,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
 import {DialogModule} from "@angular/cdk/dialog";
 import {ToastrModule} from "ngx-toastr";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-root',
@@ -22,11 +23,14 @@ import {ToastrModule} from "ngx-toastr";
     MatTableModule,
     MatButtonModule,
     RouterModule,
-    ToastrModule
+    ToastrModule,
+    NgIf
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  constructor(public router: Router) {
+  }
   title = 'PASCHOALOTTO-Random-User-Consumer.Front';
 }

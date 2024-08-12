@@ -26,6 +26,10 @@ export class UserService {
     return this.http.get<any>(`${this.apiUrl}/user/find/${id}`); // Ajuste os parâmetros conforme necessário
   }
 
+  getUsersReport(): Observable<IResponseUserDetail[]> {
+    return this.http.get<any>(`${this.apiUrl}/user/report`); // Ajuste os parâmetros conforme necessário
+  }
+
   updateUser(user:IRequestUser): Observable<IResponseUserDetail> {
     return this.http.put<IResponseUserDetail>(`${this.apiUrl}/user/update`, user); // Ajuste os parâmetros conforme necessário
   }

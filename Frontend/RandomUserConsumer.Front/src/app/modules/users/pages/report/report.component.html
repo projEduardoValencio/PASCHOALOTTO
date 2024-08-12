@@ -1,1 +1,18 @@
-<p>report works!</p>
+<div *ngIf="isLoading" class="main-component">Loading...</div>
+<div *ngIf="isError" class="main-component">{{errorMessage}}</div>
+
+<main *ngIf="!isLoading && !isError" class="main-component report-grid">
+  <div class="absolute flex flex-row justify-end top-1.5 gap-3 pr-2 right-0">
+    <button (click)="backToList()" title="Back to Index"
+            class="rounded flex items-center justify-center w-12 h-12 right-2 top-2" style="background: #333333">
+      <mat-icon color="white" fontIcon="arrow_back"/>
+    </button>
+
+    <button (click)="printReport()" title="Print Report"
+            class="rounded flex items-center justify-center w-12 h-12 right-2 top-2" style="background: #333333">
+      <mat-icon color="white" fontIcon="print"/>
+    </button>
+  </div>
+
+  <paschoalotto-user-report-card class="" *ngFor="let user of users" [user]="user"/>
+</main>

@@ -1,0 +1,108 @@
+<div *ngIf="user" class="main-card">
+  <div class="user-header">
+    <img src="{{ user.pictureUrl }}" alt="User Image">
+    <div>
+      {{ user.name.toLowerCase() }}
+      <div class="flex flex-row items-center gap-3">
+        <img src='{{ "https://flagsapi.com/" + user.nationality + "/shiny/24.png"}}'/>
+        <span class="text-base leading-3">{{user.nationality}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full flex flex-col items-center justify-center mb-3">
+    <span>Info</span>
+    <span class="divider h-0.5 bg-white text-center"></span>
+  </div>
+
+  <div id="teste" class="user-info">
+    <div class="w-full">
+      <div>
+        <label>Age:</label>
+        <span>{{ DateUtils.getAge(user.birthday) }}</span>
+      </div>
+      <div>
+        <label>Birthday:</label>
+        <span>{{ DateUtils.getDateFormated(user.birthday) }}</span>
+      </div>
+    </div>
+
+    <div class="w-full">
+      <label>Gender:</label>
+      <span>{{ user.gender }}</span>
+    </div>
+  </div>
+
+  <div class="w-full flex flex-col items-center justify-center mb-3 mt-3">
+    <span>Contact</span>
+    <span class="divider h-0.5 bg-white text-center"></span>
+  </div>
+
+  <div class="user-contact">
+    <div>
+      <label>Email:</label>
+      <span>{{ user.contact.email }}</span>
+    </div>
+    <div>
+      <label>Phone:</label>
+      <span>{{ user.contact.phoneNumber }}</span>
+    </div>
+  </div>
+
+  <div class="w-full flex flex-col items-center justify-center mb-3 mt-3">
+    <span>Address</span>
+    <span class="divider h-0.5 bg-white text-center"></span>
+  </div>
+
+  <div class="user-address">
+    <div class="w-full">
+      <div>
+        <label>Street:</label>
+        <span>{{ user.address.street }}</span>
+      </div>
+      <div>
+        <label>City:</label>
+        <span>{{ user.address.city }}</span>
+      </div>
+      <div>
+        <label>Zip Code:</label>
+        <span>{{ user.address.zipCode }}</span>
+      </div>
+    </div>
+
+    <div class="w-full">
+      <div>
+        <label>State:</label>
+        <span>{{ user.address.state }}</span>
+      </div>
+      <div>
+        <label>Country:</label>
+        <span>{{ user.address.country }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full flex flex-col items-center justify-center mb-3 mt-3">
+    <span>Account</span>
+    <span class="divider h-0.5 bg-white text-center"></span>
+  </div>
+
+  <div class="user-account">
+    <div>
+      <label>UUID:</label>
+      <span>{{ user.account.login.uuid }}</span>
+    </div>
+    <div>
+      <label>Username:</label>
+      <span>{{ user.account.login.username }}</span>
+    </div>
+    <div>
+      <label>Password:</label>
+      <span>{{ user.account.login.password }}</span>
+    </div>
+    <div>
+      <label>Registration:</label>
+      <span>{{ DateUtils.getDateFormated(user.account.registrationDate) }}</span>
+    </div>
+  </div>
+</div>
