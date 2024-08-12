@@ -36,23 +36,23 @@
       <div formGroupName="login">
         <div class="form-group">
           <label for="uuid">UUID:</label>
-          <input id="uuid" formControlName="uuid" type="text" />
+          <input id="uuid" formControlName="uuid" type="text" maxlength="50"/>
         </div>
 
         <div class="form-group">
           <label for="username">Username:</label>
-          <input id="username" formControlName="username" type="text" />
+          <input id="username" formControlName="username" type="text" maxlength="15"/>
         </div>
 
         <div class="form-group">
           <label for="password">Password:</label>
-          <input id="password" formControlName="password" type="text" />
+          <input id="password" formControlName="password" type="text" maxlength="20"/>
         </div>
       </div>
 
       <div class="form-group">
         <label for="registrationDate">Registration Date:</label>
-        <input id="registrationDate" formControlName="registrationDate" type="date" />
+        <input id="registrationDate" formControlName="registrationDate" type="date"/>
       </div>
     </div>
   </div>
@@ -61,51 +61,55 @@
     <div class="flex flex-col w-full" formGroupName="contact">
       <div class="form-group">
         <label for="email">Email:</label>
-        <input id="email" formControlName="email" type="email" />
+        <input id="email" formControlName="email" type="email" maxlength="100"/>
       </div>
 
       <div class="form-group">
         <label for="phoneNumber">Phone Number:</label>
-        <input id="phoneNumber" formControlName="phoneNumber" type="text" />
+        <input id="phoneNumber" formControlName="phoneNumber" type="tel" maxlength="14"/>
       </div>
 
       <div class="form-group">
         <label for="cellPhone">Cell Phone:</label>
-        <input id="cellPhone" formControlName="cellPhone" type="text" />
+        <input id="cellPhone" formControlName="cellPhone" type="text" maxlength="14"/>
       </div>
     </div>
 
     <div class="flex flex-col w-full" formGroupName="address">
       <div class="form-group">
         <label for="street">Street:</label>
-        <input id="street" formControlName="street" type="text" />
+        <input id="street" formControlName="street" type="text" maxlength="50"/>
       </div>
 
       <div class="form-group">
         <label for="number">Number:</label>
-        <input id="number" formControlName="number" type="number" />
+        <input id="number" formControlName="number" type="number" maxlength="5"/>
       </div>
 
       <div class="form-group">
         <label for="city">City:</label>
-        <input id="city" formControlName="city" type="text" />
+        <input id="city" formControlName="city" type="text" maxlength="20"/>
       </div>
 
       <div class="form-group">
         <label for="state">State:</label>
-        <input id="state" formControlName="state" type="text" />
+        <input id="state" formControlName="state" type="text" maxlength="10"/>
       </div>
 
       <div class="form-group">
         <label for="zipCode">Zip Code:</label>
-        <input id="zipCode" formControlName="zipCode" type="text" />
+        <input id="zipCode" formControlName="zipCode" type="text" maxlength="10"/>
       </div>
 
       <div class="form-group">
         <label for="country">Country:</label>
-        <input id="country" formControlName="country" type="text" />
+        <input id="country" formControlName="country" type="text" maxlength="20"/>
       </div>
     </div>
   </div>
-  <button type="submit" [disabled]="userForm.invalid">Submit</button>
+
+  <div class="flex flex-row justify-center h-10 mt-5">
+    <button class="w-24 rounded" style="background: #262626"
+      type="submit" [disabled]="userForm.invalid">Submit</button>
+  </div>
 </form>
