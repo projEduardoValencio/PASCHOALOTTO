@@ -1,0 +1,17 @@
+<div class="rounded-xl p-5" style="background: #464646">
+  <h4 mat-dialog-title>Confirm Delete User</h4>
+  <p>Are you sure you want to delete User: {{data.name}}</p>
+  <div class="flex flex-row justify-end gap-3 mt-5">
+    <button (click)="dialogRef.close(false)"
+            class="rounded h-10 w-20"
+            style="background: #707070"
+    >
+      Cancel
+    </button>
+    <button (click)="dialogRef.close(true)"
+            class="bg-red-600 rounded h-10 w-20"
+    >
+      Confirm
+    </button>
+  </div>
+</div>

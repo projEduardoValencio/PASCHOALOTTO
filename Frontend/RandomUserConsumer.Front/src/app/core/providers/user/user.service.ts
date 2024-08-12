@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {IResponseUserSearch} from "../../interfaces/responses/IResponseUserSearch";
 import {IResponseUserGenerated} from "../../interfaces/responses/IResponseUserGenerated";
 import {IResponseUserDetail} from "../../interfaces/responses/IResponseUserDetail";
+import {IRequestUser} from "../../interfaces/request/IRequestUser";
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,13 @@ export class UserService {
 
   getUser(id:number): Observable<IResponseUserDetail> {
     return this.http.get<any>(`${this.apiUrl}/user/find/${id}`); // Ajuste os parâmetros conforme necessário
+  }
+
+  updateUser(user:IRequestUser): Observable<IResponseUserDetail> {
+    return this.http.put<IResponseUserDetail>(`${this.apiUrl}/user/update`, user); // Ajuste os parâmetros conforme necessário
+  }
+
+  deleteUser(id:number): Observable<void> {
+    return this.http.delete<any>(`${this.apiUrl}/user/delete/${id}`); // Ajuste os parâmetros conforme necessário
   }
 }

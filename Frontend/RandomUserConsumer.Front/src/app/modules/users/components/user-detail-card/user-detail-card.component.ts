@@ -17,7 +17,6 @@ export class UserDetailCardComponent implements OnInit{
   @Input() isLoading:boolean = true;
 
   ngOnInit(): void {
-    console.log('User Detail Card ', this.user);
   }
 
   protected readonly DateUtils = DateUtils;
