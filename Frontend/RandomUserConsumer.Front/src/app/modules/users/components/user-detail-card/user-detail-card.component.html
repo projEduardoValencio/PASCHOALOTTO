@@ -5,6 +5,10 @@
     <img src="{{ user.pictureUrl }}" alt="User Image">
     <div>
       {{ user.name.toLowerCase() }}
+      <div class="flex flex-row items-center gap-3">
+        <img src='{{ "https://flagsapi.com/" + user.nationality + "/shiny/24.png"}}'/>
+        <span class="text-base leading-3">{{user.nationality}}</span>
+      </div>
     </div>
   </div>
 

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UserEditFormComponent} from "../../../components/user-edit-form/user-edit-form.component";
+import {UserEditFormComponent} from "../../components/user-edit-form/user-edit-form.component";
 import {MatIcon} from "@angular/material/icon";
 import {ActivatedRoute, Router} from "@angular/router";
 

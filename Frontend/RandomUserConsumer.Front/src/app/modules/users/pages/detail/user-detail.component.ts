@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {IResponseUserDetail} from "../../../../../core/interfaces/responses/IResponseUserDetail";
-import {userResponseDetailMock} from "../../../../../core/mock/UserResponseDetailMock";
-import BirthdayUtils from "../../../../../shared/utils/DateUtils";
-import DateUtils from "../../../../../shared/utils/DateUtils";
-import {UserDetailCardComponent} from "../../../components/user-detail-card/user-detail-card.component";
+import {IResponseUserDetail} from "../../../../core/interfaces/responses/IResponseUserDetail";
+import {userResponseDetailMock} from "../../../../core/mock/UserResponseDetailMock";
+import BirthdayUtils from "../../../../shared/utils/DateUtils";
+import DateUtils from "../../../../shared/utils/DateUtils";
+import {UserDetailCardComponent} from "../../components/user-detail-card/user-detail-card.component";
 import {MatIcon} from "@angular/material/icon";
-import {UserService} from "../../../../../core/providers/user/user.service";
+import {UserService} from "../../../../core/providers/user/user.service";
 import {NgIf} from "@angular/common";
 
 @Component({
