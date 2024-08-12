@@ -149,7 +149,7 @@ public class UserUseCase : IUserUserCase
             {
                 Id = user.Id,
                 Name = dto.Name,
-                Birthday = dto.Birthday,
+                Birthday = DateTime.SpecifyKind(dto.Birthday, DateTimeKind.Utc),
                 Gender = new GenderType(dto.Gender),
                 Nationality = dto.Nationality,
                 PictureUrl = dto.PictureUrl,

@@ -10,7 +10,6 @@ public class RequestRegisterUser
     public UserContact Contact { get; set; }
     public UserAccount Account { get; set; }
     public UserAddress Address { get; set; }
-    public UserLogin Login { get; set; }
 
     public class UserContact
     {

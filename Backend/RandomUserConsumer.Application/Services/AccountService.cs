@@ -44,7 +44,7 @@ public class AccountService
         {
             IdUser = idUser,
             IdLogin = idLogin,
-            RegistrationDate = dto.Account.RegistrationDate,
+            RegistrationDate = DateTime.SpecifyKind(dto.Account.RegistrationDate, DateTimeKind.Utc),
             Id = idAccount
         };
         
