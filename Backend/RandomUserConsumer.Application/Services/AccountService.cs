@@ -37,4 +37,17 @@ public class AccountService
         
         return await _accountWriteRepository.Add(entityAccount);
     }
+
+    public async Task<Account> UpdateAccount(int idAccount, int idUser, int idLogin, RequestUpdateUser dto)
+    {
+        Account entityAccount = new Account()
+        {
+            IdUser = idUser,
+            IdLogin = idLogin,
+            RegistrationDate = dto.Account.RegistrationDate,
+            Id = idAccount
+        };
+        
+        return await _accountWriteRepository.Update(idAccount,entityAccount);
+    }
 }

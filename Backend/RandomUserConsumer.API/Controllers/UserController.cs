@@ -66,4 +66,14 @@ public class UserController : ControllerBase
     {
         return Ok(await userUseCase.RegisterUser(dto));
     }
+    
+    [HttpPut("update")]
+    [ProducesResponseType(typeof(ResponseUserRequested), StatusCodes.Status200OK)]
+    public async Task<IActionResult> UpdateUser(
+        [FromServices] IUserUserCase userUseCase,
+        [FromBody] RequestUpdateUser dto
+    )
+    {
+        return Ok(await userUseCase.UpdateUser(dto));
+    }
 }

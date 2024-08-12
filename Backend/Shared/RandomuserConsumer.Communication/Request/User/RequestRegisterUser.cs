@@ -10,6 +10,7 @@ public class RequestRegisterUser
     public UserContact Contact { get; set; }
     public UserAccount Account { get; set; }
     public UserAddress Address { get; set; }
+    public UserLogin Login { get; set; }
 
     public class UserContact
     {
@@ -23,7 +24,7 @@ public class RequestRegisterUser
         public string Uuid { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public string Salt { get; set; }
+        public string Salt { get; set; } = String.Empty;
     }
 
     public class UserAccount

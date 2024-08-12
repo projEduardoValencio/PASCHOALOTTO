@@ -39,4 +39,18 @@ public class ContactService
         
         return await _contactWriteRepository.Add(entityContact);
     }
+    
+    public async Task<Contact> UpdateContact(int idContact, int idUser, RequestUpdateUser dto)
+    {
+        Contact entityContact = new Contact()
+        {
+            Email = dto.Contact.Email,
+            PhoneNumber = dto.Contact.PhoneNumber,
+            CellPhone = dto.Contact.CellPhone,
+            IdUser = idUser,
+            Id = idContact
+        };
+        
+        return await _contactWriteRepository.Update(idContact,entityContact);
+    }
 }

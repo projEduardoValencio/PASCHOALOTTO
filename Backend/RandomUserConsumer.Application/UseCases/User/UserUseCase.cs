@@ -133,4 +133,42 @@ public class UserUseCase : IUserUserCase
             throw new Exception($"Error register user: {e.Message}");
         }
     }
+
+    public async Task<object?> UpdateUser(RequestUpdateUser dto)
+    {
+        _writeRepository.BeginTransaction();
+        try
+        {
+            Domain.Entities.User user = await _readOnlyRepository.Find(dto.Id);
+            await _addressService.UpdateAddress(user.IdAddress, dto);
+            await _accountService.UpdateAccount(user.Account.Id, user.Id, user.Login.Id, dto);
+            await _contactService.UpdateContact(user.Contact.Id, user.Id, dto);
+            await _loginService.UpdateLogin(user.Login.Id, user.Id, dto);
+            
+            Domain.Entities.User updatedUser = new Domain.Entities.User()
+            {
+                Id = user.Id,
+                Name = dto.Name,
+                Birthday = dto.Birthday,
+                Gender = new GenderType(dto.Gender),
+                Nationality = dto.Nationality,
+                PictureUrl = dto.PictureUrl,
+                IdAddress = user.IdAddress,
+                Contact = user.Contact,
+                Login = user.Login,
+                Account = user.Account,
+                Address = user.Address,
+                CreatedAt = user.CreatedAt,
+            };
+
+            user = await _writeRepository.Update(user.Id, updatedUser);
+            _writeRepository.CommitTrasaction();
+            return new ResponseUserRequested(user);
+        }
+        catch (Exception e)
+        {
+            _writeRepository.RollbackTransaction();
+            throw new Exception($"Error updating user: {e.Message}");
+        }
+    }
 }

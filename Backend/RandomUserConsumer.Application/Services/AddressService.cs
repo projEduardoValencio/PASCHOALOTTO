@@ -41,4 +41,18 @@ public class AddressService
         
         return await _addressWriteRepository.Add(entityAddress);
     }
+
+    public async Task<Address> UpdateAddress(int addressId, RequestUpdateUser dto)
+    {
+        Address updatedAddress = new Address()
+        {
+            Id = addressId,
+            Street = dto.Address.Street,
+            City = dto.Address.City,
+            State = dto.Address.State,
+            ZipCode = dto.Address.ZipCode,
+            Country = dto.Address.Country,
+        };
+        return await _addressWriteRepository.Update(addressId, updatedAddress);
+    }
 }

@@ -59,4 +59,33 @@ public class LoginService
         
         return await _loginWriteRepository.Add(entityLogin);
     }
+    
+    public async Task<Login> UpdateLogin(int idLogin, int idUser, RequestUpdateUser dto)
+    {
+        if (String.IsNullOrWhiteSpace(dto.Account.Login.Uuid))
+        {
+            // TODO: Gerar o uuid se nao tiver
+        }
+
+        string md5 = PasswordEncryption.HashPassword(dto.Account.Login.Password, dto.Account.Login.Salt,
+            EncryptionTypeEnum.MD5);
+        string sha1 = PasswordEncryption.HashPassword(dto.Account.Login.Password, dto.Account.Login.Salt,
+            EncryptionTypeEnum.SHA1);
+        string sha256 = PasswordEncryption.HashPassword(dto.Account.Login.Password, dto.Account.Login.Salt,
+            EncryptionTypeEnum.SHA256);
+        Login entityLogin = new Login()
+        {
+            Id = idLogin,
+            Uuid = dto.Account.Login.Uuid,
+            Username = dto.Account.Login.Username,
+            Password = dto.Account.Login.Password,
+            Salt = dto.Account.Login.Salt,
+            Md5 = md5,
+            Sha1 = sha1,
+            Sha256 = sha256,
+            IdUser = idUser,
+        };
+        
+        return await _loginWriteRepository.Update(idLogin, entityLogin);
+    }
 }
