@@ -1,24 +1,25 @@
 @import "styles";
 
 form{
-  @apply px-10 py-3 rounded-3xl h-auto;
+  @apply flex flex-col px-10 py-3 mb-2 rounded-3xl h-fit box-border;
   background: #333333;
 }
 
 form input{
-  @apply flex flex-col
+  @apply flex flex-col box-border
 }
 
 form label{
-  @apply text-xs
+  @apply text-xs box-border
 }
 
 form input{
-  @apply w-full rounded px-1;
+  @apply w-full rounded px-1 box-border;
   color: $primary-font-color;
   background: $primary-background-color
 }
 
 .user-form{
-  @apply flex-col w-1/2
+  @apply flex-col w-1/2 h-full mt-10 mb-40
+  max-md:w-full;
 }

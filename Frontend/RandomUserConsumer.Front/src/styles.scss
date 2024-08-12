@@ -31,3 +31,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 @import 'ngx-toastr/toastr';
+
+button:hover{
+  transform: scale(1.05)
+}
