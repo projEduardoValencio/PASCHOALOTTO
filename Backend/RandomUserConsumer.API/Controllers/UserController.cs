@@ -6,7 +6,6 @@ using RandomuserConsumer.Communication.Responses.User;
 
 namespace PASCHOALOTTO_Random_User_Consumer.Controllers;
 
-
 [ApiController]
 [Route("/user")]
 public class UserController : ControllerBase
@@ -24,7 +23,7 @@ public class UserController : ControllerBase
     {
         return Ok(await userUseCase.GenerateUser());
     }
-    
+
     [HttpGet("find/{id}")]
     [ProducesResponseType(typeof(ResponseUserRequested), StatusCodes.Status200OK)]
     public async Task<IActionResult> FindUser(
@@ -35,6 +34,13 @@ public class UserController : ControllerBase
         return Ok(await userUseCase.FindUser(id));
     }
 
+    [HttpGet("report")]
+    [ProducesResponseType(typeof(ResponseUserRequested), StatusCodes.Status200OK)]
+    public async Task<IActionResult> UsersReport([FromServices] IUserUserCase userUseCase)
+    {
+        return Ok(await userUseCase.Report());
+    }
+
     [HttpGet("list/{page}")]
     [ProducesResponseType(typeof(List<ResponseUserList>), StatusCodes.Status200OK)]
     [ProducesErrorResponseType(typeof(String))]
@@ -43,17 +49,17 @@ public class UserController : ControllerBase
         [FromRoute] int page = 1,
         [FromQuery] int pageSize = 10,
         [FromQuery] string? search = null
-        )
+    )
     {
-        page = page <= 0? 1 : page;
+        page = page <= 0 ? 1 : page;
         ResponseUserList result = new ResponseUserList(
             await userUseCase.ListUsers(page, pageSize, search),
             page,
             pageSize,
             await userUseCase.CountUsers(search),
-            search?? string.Empty
+            search ?? string.Empty
         );
-        
+
         return Ok(result);
     }
 
@@ -66,7 +72,7 @@ public class UserController : ControllerBase
     {
         return Ok(await userUseCase.RegisterUser(dto));
     }
-    
+
     [HttpPut("update")]
     [ProducesResponseType(typeof(ResponseUserRequested), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateUser(
@@ -76,7 +82,7 @@ public class UserController : ControllerBase
     {
         return Ok(await userUseCase.UpdateUser(dto));
     }
-    
+
     [HttpDelete("delete/{id}")]
     [ProducesResponseType(typeof(ResponseUserRequested), StatusCodes.Status200OK)]
     public async Task<IActionResult> DeleteUser(

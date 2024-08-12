@@ -12,4 +12,5 @@ public interface IUserUserCase
     Task<ResponseUserGenerated> RegisterUser(RequestRegisterUser dto);
     Task<ResponseUserRequested> UpdateUser(RequestUpdateUser dto);
     Task<ResponseUserRequested> DeleteUser(int id);
+    Task<List<ResponseUserRequested>> Report();
 }
