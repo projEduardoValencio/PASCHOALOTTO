@@ -1,4 +1,3 @@
-using System.Net;
 using RandomUserConsumer.Application.Interfaces;
 using RandomUserConsumer.Application.Provider;
 using RandomUserConsumer.Application.Services;
@@ -20,7 +19,7 @@ public class UserUseCase : IUserUserCase
     private readonly LoginService _loginService;
     private readonly CoordinateService _coordinateService;
     private readonly ContactService _contactService;
-    
+
 
     public UserUseCase(
         IUserWriteRepository writeRepository,
@@ -144,7 +143,7 @@ public class UserUseCase : IUserUserCase
             await _accountService.UpdateAccount(user.Account.Id, user.Id, user.Login.Id, dto);
             await _contactService.UpdateContact(user.Contact.Id, user.Id, dto);
             await _loginService.UpdateLogin(user.Login.Id, user.Id, dto);
-            
+
             Domain.Entities.User updatedUser = new Domain.Entities.User()
             {
                 Id = user.Id,
@@ -175,5 +174,12 @@ public class UserUseCase : IUserUserCase
     public async Task<ResponseUserRequested> DeleteUser(int id)
     {
         return new ResponseUserRequested(await _writeRepository.Delete(id));
+    }
+
+    public async Task<List<ResponseUserRequested>> Report()
+    {
+        List<Domain.Entities.User> users = await _readOnlyRepository.ListAll();
+
+        return users.Select(u => new ResponseUserRequested(u)).ToList();
     }
 }

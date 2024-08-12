@@ -50,4 +50,9 @@ public class UserRepository : RepositoryBase<User, int>, IUserWriteRepository, I
 
         return await _dbSet.CountAsync();
     }
+
+    public async Task<List<User>> ListAll()
+    {
+        return await _dbSet.ToListAsync();
+    }
 }
