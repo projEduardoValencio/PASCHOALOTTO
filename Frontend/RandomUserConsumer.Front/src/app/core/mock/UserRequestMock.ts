@@ -1,6 +1,6 @@
-﻿import {IReponseUserGenerated} from "../interfaces/responses/IResponseUserGenerated";
+﻿import {IResponseUserGenerated} from "../interfaces/responses/IResponseUserGenerated";
 
-export const userRequestMock: IReponseUserGenerated = {
+export const userRequestMock: IResponseUserGenerated = {
   contact: {
     email: "robin.tucker@example.com",
     phoneNumber: "(940) 431-3865",

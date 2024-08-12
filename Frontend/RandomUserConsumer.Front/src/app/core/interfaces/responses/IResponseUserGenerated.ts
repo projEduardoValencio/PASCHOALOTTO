@@ -24,7 +24,7 @@ interface IAddress {
   country: string;
 }
 
-interface IReponseUserGenerated {
+interface IResponseUserGenerated {
   contact: IContact;
   account: IAccount;
   id: number;
@@ -37,5 +37,5 @@ interface IReponseUserGenerated {
 }
 
 export {
-  IReponseUserGenerated
+  IResponseUserGenerated
 }

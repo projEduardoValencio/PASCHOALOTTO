@@ -1,5 +1,6 @@
 <div class="user-table-container">
-  <button class="absolute rounded flex items-center justify-center w-12 h-12 right-2 top-2"
+  <button (click)="callbackGenerateUser()"
+    class="absolute rounded flex items-center justify-center w-12 h-12 right-2 top-2"
           style="background: #333333" title="Generate User">
     <mat-icon color="white" fontIcon="add"/>
   </button>
@@ -21,7 +22,7 @@
   </div>
 
   <div *ngIf="isLoading">Loading ...</div>
-  <div *ngIf="isError">Error!</div>
+  <div *ngIf="isError">{{errorMessage}}</div>
 
   <table *ngIf="!isError && !isLoading" mat-table class="user-table">
     <thead class="user-table-thead">

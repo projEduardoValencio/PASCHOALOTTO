@@ -1,4 +1,6 @@
-<div class="main-card">
+<div *ngIf="isLoading">Loading...</div>
+
+<div *ngIf="!isLoading && user" class="main-card">
   <div class="user-header">
     <img src="{{ user.pictureUrl }}" alt="User Image">
     <div>

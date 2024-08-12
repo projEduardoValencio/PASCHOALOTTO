@@ -1,8 +1,12 @@
 <main>
   <button (click)="backToList()"
-    class="absolute rounded flex items-center justify-center w-12 h-12 right-2 top-2" style="background: #333333">
+          class="absolute rounded flex items-center justify-center w-12 h-12 right-2 top-2" style="background: #333333">
     <mat-icon color="white" fontIcon="arrow_back"/>
   </button>
 
-  <paschoalotto-user-detail-card class="flex flex-row w-full justify-center pt-10" [user]="user"/>
+  <div *ngIf="isError">{{errorMessage}}</div>
+  <paschoalotto-user-detail-card
+    *ngIf="!isError"
+    class="flex flex-row w-full justify-center pt-10" [user]="user" [isLoading]="isLoading"
+  />
 </main>

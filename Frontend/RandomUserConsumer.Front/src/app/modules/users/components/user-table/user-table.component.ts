@@ -8,6 +8,7 @@ import {MatIcon} from "@angular/material/icon";
 import DateUtils from "../../../../shared/utils/DateUtils";
 import {IResponseUserSearch} from "../../../../core/interfaces/responses/IResponseUserSearch";
 import {FormsModule} from "@angular/forms";
+import {response} from "express";
 
 interface IColum{
   name: string;
@@ -29,12 +30,13 @@ export class UserTableComponent implements OnInit{
   constructor(private userService: UserService, private router: Router) {}
   isLoading = true;
   isError = false;
+  errorMessage: string = '';
 
   tableData = [userResponseItemMock,userResponseItemMock];
   totalItems:number = 0;
   currentPage:number = 1;
   totalPages:number = 5;
-  pageSize: number = 10;
+  pageSize: number = 6;
   search:string = '';
 
   getCountryFlag(country:string){
@@ -71,6 +73,7 @@ export class UserTableComponent implements OnInit{
       error => {
         console.error('Error fetching users', error);
         this.isError = true;
+        this.errorMessage = error.message;
         this.isLoading = false;
       }
     );
@@ -99,4 +102,21 @@ export class UserTableComponent implements OnInit{
   }
 
   protected readonly DateUtils = DateUtils;
+
+  callbackGenerateUser() {
+    this.isLoading = true;
+    this.userService.generateUser().subscribe(
+      response => {
+        let id = response.id
+        this.router.navigate(['/user/detail', id]);
+        this.isLoading = false;
+        return;
+      },
+      error => {
+        this.isError = true;
+        this.isLoading = false;
+        console.error('Error generating user', error);
+      }
+    )
+  }
 }

@@ -1,21 +1,17 @@
-﻿interface IContact {
-  email: string;
-  phoneNumber: string;
-  cellPhone: string;
+﻿interface IResponseUserDetail {
+  id: number;
+  name: string;
+  birthday: string;
+  gender: string;
+  nationality: string;
+  pictureUrl: string;
+  address: Address;
+  account: Account;
+  contact: Contact;
+  login: Login;
 }
 
-interface ILogin {
-  uuid: string;
-  username: string;
-  password: string;
-}
-
-interface IAccount {
-  login: ILogin;
-  registrationDate: string; // Consider using Date if you prefer Date objects
-}
-
-interface IAddress {
+interface Address {
   street: string;
   number: number;
   city: string;
@@ -24,16 +20,21 @@ interface IAddress {
   country: string;
 }
 
-interface IResponseUserDetail {
-  contact: IContact;
-  account: IAccount;
-  id: number;
-  name: string;
-  birthday: string; // Consider using Date if you prefer Date objects
-  gender: string;
-  nationality: string;
-  pictureUrl: string;
-  address: IAddress;
+interface Account {
+  login: Login;
+  registrationDate: string;
+}
+
+interface Contact {
+  email: string;
+  phoneNumber: string;
+  cellPhone: string;
+}
+
+interface Login {
+  uuid: string;
+  username: string;
+  password: string;
 }
 
 export {
