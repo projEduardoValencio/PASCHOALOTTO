@@ -2,7 +2,7 @@
   <img src="https://www.paschoalotto.com.br/wp-content/themes/paschoalotto/img/institucional/logo/logo-np.webp" alt="Descrição da Imagem" width="200"/>
 </p>
 <p align="center" style="font-weight: bold; font-size: 1.5em">
-Random User API Consumer <br/> Teste Técnico por Eduardo Valencio
+Random User API Consumer <br/> Teste Técnico
 </p>
 
 <p align="center">
