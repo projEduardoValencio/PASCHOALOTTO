@@ -22,9 +22,13 @@ interface IColum{
 })
 export class UserTableComponent {
   constructor(private userService: UserService, private router: Router) {}
+  isLoading = true;
 
   tableData = [userResponseItemMock,userResponseItemMock];
-  isLoading = true;
+  totalItems:number = 0;
+  currentPage:number = 1;
+  totalPages:number = 5;
+  pageSize: number = 10;
 
   setHeaderStyle(column:IColum){
     return `width: ${column.width}%;`
@@ -75,4 +79,19 @@ export class UserTableComponent {
     console.log("aQUIJKJKw")
     this.router.navigate(['/user/edit', user.id]); // Ajuste o path
   }
+
+  loadUserList(){
+    this.tableData = [userResponseItemMock, userResponseItemMock];
+  }
+
+  nextPage(){
+    this.currentPage++;
+    this.loadUserList();
+  }
+
+  previousPage(){
+    this.currentPage--;
+    this.loadUserList();
+  }
+
 }

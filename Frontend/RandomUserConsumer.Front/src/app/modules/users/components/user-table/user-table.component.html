@@ -1,30 +1,61 @@
 <div class="user-table-container">
+  <button class="absolute rounded flex items-center justify-center w-12 h-12 right-2 top-2"
+          style="background: #333333" title="Generate User">
+    <mat-icon color="white" fontIcon="add"/>
+  </button>
+
+  <div class="flex flex-row w-full gap-3">
+    <input class="input-search" placeholder="Search Name"/>
+    <button class="rounded flex items-center justify-center w-12 h-12 right-2 top-2"
+            style="background: #333333" title="Search User">
+      <mat-icon color="white" fontIcon="search"/>
+    </button>
+    <button class="rounded flex items-center justify-center w-12 h-12 right-2 top-2"
+            style="background: #333333" title="Refresh List">
+      <mat-icon color="white" fontIcon="refresh"/>
+    </button>
+
+  </div>
+
   <table mat-table class="user-table">
     <thead class="user-table-thead">
-      <tr>
-         <th>Photo</th>
-         <th>Name</th>
-         <th class="max-sm:hidden">E-mail</th>
-         <th class="max-md:hidden">Phone</th>
-         <th class="max-xl:hidden">Birthday</th>
-         <th class="max-sm:hidden">Age</th>
-         <th></th>
-      </tr>
+    <tr>
+      <th width="70px"></th>
+      <th>Name</th>
+      <th class="max-sm:hidden">E-mail</th>
+      <th class="max-md:hidden">Phone</th>
+      <th class="max-xl:hidden">Birthday</th>
+      <th class="max-sm:hidden">Age</th>
+      <th></th>
+    </tr>
     </thead>
     <tbody class="user-table-tbody">
-       <tr *ngFor="let user of tableData" class="user-table-row text-center z-10" (dblclick)="goToUserDetail(user)">
-         <td style="max-height: inherit"> <img [src]="user.pictureUrl" class="object-contain h-full" style="max-height: inherit"/> </td>
-         <td class="capitalize text-center">{{user.name.toLowerCase()}}</td>
-         <td class="max-sm:hidden">{{user.contact.email}}</td>
-         <td class="max-md:hidden">{{user.contact.phoneNumber}}</td>
-         <td class="max-xl:hidden">{{getBirthdayDay(user.birthday)}}</td>
-         <td class="max-sm:hidden">{{getAge(user.birthday)}}</td>
-         <td class="gap-2">
-           <button (click)="goToUserDetail(user)"><mat-icon fontIcon="info"/></button>
-           <button (click)="goToUserEdit(user)"><mat-icon fontIcon="edit"/></button>
-           <button><mat-icon fontIcon="delete"/></button>
-         </td>
-       </tr>
+    <tr *ngFor="let user of tableData" class="user-table-row text-center z-10" (dblclick)="goToUserDetail(user)">
+      <td style="max-height: inherit"><img [src]="user.pictureUrl" class="object-contain h-full rounded-full p-1"
+                                           style="max-height: inherit"/></td>
+      <td class="capitalize text-center">{{ user.name.toLowerCase() }}</td>
+      <td class="max-sm:hidden">{{ user.contact.email }}</td>
+      <td class="max-md:hidden">{{ user.contact.phoneNumber }}</td>
+      <td class="max-xl:hidden">{{ getBirthdayDay(user.birthday) }}</td>
+      <td class="max-sm:hidden">{{ getAge(user.birthday) }}</td>
+      <td class="gap-2">
+        <button (click)="goToUserDetail(user)">
+          <mat-icon fontIcon="info"/>
+        </button>
+        <button (click)="goToUserEdit(user)">
+          <mat-icon fontIcon="edit"/>
+        </button>
+        <button>
+          <mat-icon fontIcon="delete"/>
+        </button>
+      </td>
+    </tr>
     </tbody>
   </table>
+
+  <div class="pagination flex flex-row gap-3">
+    <button class="px-4 rounded" style="background: #383838" (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button class="px-4 rounded" style="background: #383838" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
 </div>

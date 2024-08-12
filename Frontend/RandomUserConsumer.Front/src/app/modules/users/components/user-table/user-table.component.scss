@@ -1,8 +1,18 @@
 @import "styles";
 
 .user-table-container{
-  @apply flex w-2/3 rounded overflow-hidden
+  @apply flex flex-col w-2/3 rounded overflow-hidden gap-5 mt-5
   max-md:w-full;
+}
+
+.input-search{
+  @apply w-full px-2 rounded;
+  background: #333333;
+  color: #989797;
+}
+
+.pagination button:disabled{
+  background: #262626 !important;
 }
 
 .user-table{
