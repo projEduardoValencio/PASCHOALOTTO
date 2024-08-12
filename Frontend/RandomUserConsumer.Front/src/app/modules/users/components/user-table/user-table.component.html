@@ -4,10 +4,10 @@
       <tr>
          <th>Photo</th>
          <th>Name</th>
-         <th>E-mail</th>
-         <th>Phone</th>
-         <th>Birthday</th>
-         <th>Age</th>
+         <th class="max-sm:hidden">E-mail</th>
+         <th class="max-md:hidden">Phone</th>
+         <th class="max-xl:hidden">Birthday</th>
+         <th class="max-sm:hidden">Age</th>
          <th></th>
       </tr>
     </thead>
@@ -15,14 +15,14 @@
        <tr *ngFor="let user of tableData" class="user-table-row text-center z-10" (dblclick)="goToUserDetail(user)">
          <td style="max-height: inherit"> <img [src]="user.pictureUrl" class="object-contain h-full" style="max-height: inherit"/> </td>
          <td class="capitalize text-center">{{user.name.toLowerCase()}}</td>
-         <td>{{user.contact.email}}</td>
-         <td>{{user.contact.phoneNumber}}</td>
-         <td>{{getBirthdayDay(user.birthday)}}</td>
-         <td>{{getAge(user.birthday)}}</td>
-         <td>
+         <td class="max-sm:hidden">{{user.contact.email}}</td>
+         <td class="max-md:hidden">{{user.contact.phoneNumber}}</td>
+         <td class="max-xl:hidden">{{getBirthdayDay(user.birthday)}}</td>
+         <td class="max-sm:hidden">{{getAge(user.birthday)}}</td>
+         <td class="gap-2">
            <button (click)="goToUserDetail(user)"><mat-icon fontIcon="info"/></button>
-           <button><mat-icon fontIcon="info"/></button>
-           <button><mat-icon fontIcon="info"/></button>
+           <button><mat-icon fontIcon="edit"/></button>
+           <button><mat-icon fontIcon="delete"/></button>
          </td>
        </tr>
     </tbody>

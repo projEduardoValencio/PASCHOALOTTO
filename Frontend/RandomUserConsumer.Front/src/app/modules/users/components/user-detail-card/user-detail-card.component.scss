@@ -1,0 +1,26 @@
+@import "styles";
+
+.main-card {
+  @apply rounded w-1/3 rounded-2xl p-10 font-mono;
+  background: #383838;
+}
+
+.user-header img{
+  @apply rounded-full overflow-hidden
+}
+
+.main-card label {
+  @apply font-bold;
+}
+
+.user-header{
+  @apply flex flex-row items-center text-3xl font-bold gap-10 capitalize
+}
+
+.user-info, .user-address{
+  @apply flex justify-between
+}
+
+.divider{
+  @apply w-full
+}

@@ -1,7 +1,8 @@
 @import "styles";
 
 .user-table-container{
-  @apply flex w-2/3 rounded overflow-hidden;
+  @apply flex w-2/3 rounded overflow-hidden
+  max-md:w-full;
 }
 
 .user-table{

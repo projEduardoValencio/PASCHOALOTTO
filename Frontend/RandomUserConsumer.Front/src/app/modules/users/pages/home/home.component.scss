@@ -1,6 +1,6 @@
 @import "styles";
 
-.user-list-home{
+.user-list-home-grid{
   @apply
     px-20
     py-10
@@ -19,6 +19,15 @@
   ;
 }
 
-.user-home{
+.user-home-grid{
+  max-height: calc(100% - $footer-height);
+}
+
+.user-home-table{
+  @apply flex flex-row justify-center
+}
+
+.user-list-home-table{
+  @apply flex flex-row justify-center w-full;
   max-height: calc(100% - $footer-height);
 }
