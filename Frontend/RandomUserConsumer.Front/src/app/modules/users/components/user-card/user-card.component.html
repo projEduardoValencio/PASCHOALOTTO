@@ -1,0 +1,22 @@
+<div class="user-card-container">
+  <div id="user-logo" class="user-logo">
+    <img [src]="user.pictureUrl" style="object-fit: contain" width="100%" alt="User Image"/>
+  </div>
+
+  <div id="user-detail" class="user-detail" style="background: #d5d5d5; color: #121214">
+    <div class="w-full text-center mb-2" style="background: #989797; color: #313131">
+      <span class="font-bold capitalize text-lg text-center">{{user.name.toLowerCase()}}</span>
+    </div>
+    <div class="flex flex-row justify-between">
+      <div class="flex flex-col justify-between">
+        <span class="text-sm">{{userBirthdayFormat()}}</span>
+        <span class="text-sm">Age: {{userAge()}}</span>
+      </div>
+
+      <div class="flex flex-col justify-between">
+        <mat-icon [fontIcon]="genderIcon()"/>
+        <img [src]="flagUrl" style="max-height: 16px; width: auto; object-fit: contain">
+      </div>
+    </div>
+  </div>
+</div>

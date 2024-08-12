@@ -1,0 +1,14 @@
+@import "styles";
+
+.user-card-container{
+  @apply w-36 flex flex-col h-52 rounded-md overflow-hidden;
+  border: solid $secondary-background-color 1px;
+}
+
+.user-logo{
+  @apply w-full h-3/5 flex flex-row justify-center items-center overflow-hidden
+}
+
+.user-detail{
+  @apply flex flex-col w-full h-2/5
+}

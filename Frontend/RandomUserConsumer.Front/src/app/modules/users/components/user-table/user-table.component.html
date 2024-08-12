@@ -1,0 +1,30 @@
+<div class="user-table-container">
+  <table mat-table class="user-table">
+    <thead class="user-table-thead">
+      <tr>
+         <th>Photo</th>
+         <th>Name</th>
+         <th>E-mail</th>
+         <th>Phone</th>
+         <th>Birthday</th>
+         <th>Age</th>
+         <th></th>
+      </tr>
+    </thead>
+    <tbody class="user-table-tbody">
+       <tr *ngFor="let user of tableData" class="user-table-row text-center z-10" (dblclick)="goToUserDetail(user)">
+         <td style="max-height: inherit"> <img [src]="user.pictureUrl" class="object-contain h-full" style="max-height: inherit"/> </td>
+         <td class="capitalize text-center">{{user.name.toLowerCase()}}</td>
+         <td>{{user.contact.email}}</td>
+         <td>{{user.contact.phoneNumber}}</td>
+         <td>{{getBirthdayDay(user.birthday)}}</td>
+         <td>{{getAge(user.birthday)}}</td>
+         <td>
+           <button (click)="goToUserDetail(user)"><mat-icon fontIcon="info"/></button>
+           <button><mat-icon fontIcon="info"/></button>
+           <button><mat-icon fontIcon="info"/></button>
+         </td>
+       </tr>
+    </tbody>
+  </table>
+</div>

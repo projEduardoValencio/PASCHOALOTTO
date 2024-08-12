@@ -1,6 +1,8 @@
 @import "styles";
 
 .paschoalotto-header{
-  background: $header-bg-color;
+  background: $secondary-background-color;
+  color: $secondary-font-color;
+  height: $header-height;
   @apply flex flex-col justify-center items-center
 }

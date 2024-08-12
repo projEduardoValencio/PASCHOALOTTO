@@ -1,0 +1,27 @@
+@import "styles";
+
+.user-table-container{
+  @apply flex w-2/3 rounded overflow-hidden;
+}
+
+.user-table{
+  @apply w-full;
+  background: #313131;
+}
+
+.user-table-thead{
+  background: #262626;
+}
+
+.user-table-head-tr{
+  @apply flex;
+}
+
+.user-table-row{
+  @apply max-h-20 border-b-2;
+  border: solid #121214 1px;
+
+  &:hover{
+    background: #262626;
+  }
+}
