@@ -20,6 +20,11 @@ Random User API Consumer <br/> Teste Técnico
 
 ---
 
+[Applicação](http://3.131.36.84:4200) foi hospeada na AWS e esta a disposição para testes.
+[http://3.131.36.84:4200](http://3.131.36.84:4200)
+
+---
+
 * [Versões e Apontamentos](#versões-e-apontamentos)
 * [Arquiteture](#arquitetura)
     * [DataAnnotation e Templete](#data-anotation-template)
