@@ -1,8 +1,15 @@
 <main>
-  <button (click)="backToList()"
-          class="absolute rounded flex items-center justify-center w-12 h-12 right-2 top-2" style="background: #333333">
-    <mat-icon color="white" fontIcon="arrow_back"/>
-  </button>
+  <div class="absolute flex flex-row justify-end w-full top-1.5 gap-3 pr-2">
+    <button (click)="backToList()" title="Back to Index"
+            class="rounded flex items-center justify-center w-12 h-12 right-2 top-2" style="background: #333333">
+      <mat-icon color="white" fontIcon="arrow_back"/>
+    </button>
+
+    <button (click)="goToEditUser()" title="Edit User"
+            class="rounded flex items-center justify-center w-12 h-12 right-2 top-2" style="background: #333333">
+      <mat-icon color="white" fontIcon="edit"/>
+    </button>
+  </div>
 
   <div *ngIf="isError">{{errorMessage}}</div>
   <paschoalotto-user-detail-card

@@ -62,4 +62,8 @@ export class UserDetailComponent implements OnInit {
   backToList() {
     this.router.navigate(['']);
   }
+
+  goToEditUser() {
+    this.router.navigate(['user/edit', this.id!]);
+  }
 }

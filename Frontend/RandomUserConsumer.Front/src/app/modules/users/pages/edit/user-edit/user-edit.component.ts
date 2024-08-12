@@ -28,4 +28,8 @@ export class UserEditComponent implements OnInit{
   backToList() {
     this.router.navigate(['']);
   }
+
+  goToUserDetail() {
+    this.router.navigate(['user/detail', this.id!]);
+  }
 }

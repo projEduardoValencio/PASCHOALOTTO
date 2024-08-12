@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
-import {IResponseUserDetail} from "../../../../core/interfaces/responses/IResponseUserDetail";
 import {UserService} from "../../../../core/providers/user/user.service";
 
 @Component({
