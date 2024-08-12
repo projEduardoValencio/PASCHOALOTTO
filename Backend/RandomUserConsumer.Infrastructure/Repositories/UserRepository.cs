@@ -11,6 +11,16 @@ public class UserRepository : RepositoryBase<User, int>, IUserWriteRepository, I
     {
     }
 
+    public override async Task<User> Find(int id)
+    {
+        return await _dbSet
+            .Include(u => u.Contact)
+            .Include(u => u.Address)
+            .Include(u => u.Account)
+            .Include(u => u.Login)
+            .FirstAsync(u => u.Id == id);
+    }
+
     public override async Task<List<User>> Search(int page, int pageSize, string? search)
     {
         int skip = (page - 1) * pageSize;

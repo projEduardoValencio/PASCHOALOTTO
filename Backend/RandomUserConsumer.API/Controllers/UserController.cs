@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using RandomUserConsumer.Application.Interfaces;
+using RandomuserConsumer.Communication.Request.User;
 using RandomuserConsumer.Communication.Responses.Generics;
 using RandomuserConsumer.Communication.Responses.User;
 
@@ -23,8 +24,17 @@ public class UserController : ControllerBase
     {
         return Ok(await userUseCase.GenerateUser());
     }
+    
+    [HttpGet("find/{id}")]
+    [ProducesResponseType(typeof(ResponseUserRequested), StatusCodes.Status200OK)]
+    public async Task<IActionResult> FindUser(
+        [FromServices] IUserUserCase userUseCase,
+        [FromRoute] int id
+    )
+    {
+        return Ok(await userUseCase.FindUser(id));
+    }
 
-    #region User List Request
     [HttpGet("list/{page}")]
     [ProducesResponseType(typeof(List<ResponseUserList>), StatusCodes.Status200OK)]
     [ProducesErrorResponseType(typeof(String))]
@@ -46,5 +56,34 @@ public class UserController : ControllerBase
         
         return Ok(result);
     }
-    #endregion
+
+    [HttpPost("register")]
+    [ProducesResponseType(typeof(ResponseUserGenerated), StatusCodes.Status201Created)]
+    public async Task<IActionResult> RegisterUser(
+        [FromServices] IUserUserCase userUseCase,
+        [FromBody] RequestRegisterUser dto
+    )
+    {
+        return Ok(await userUseCase.RegisterUser(dto));
+    }
+    
+    [HttpPut("update")]
+    [ProducesResponseType(typeof(ResponseUserRequested), StatusCodes.Status200OK)]
+    public async Task<IActionResult> UpdateUser(
+        [FromServices] IUserUserCase userUseCase,
+        [FromBody] RequestUpdateUser dto
+    )
+    {
+        return Ok(await userUseCase.UpdateUser(dto));
+    }
+    
+    [HttpDelete("delete/{id}")]
+    [ProducesResponseType(typeof(ResponseUserRequested), StatusCodes.Status200OK)]
+    public async Task<IActionResult> DeleteUser(
+        [FromServices] IUserUserCase userUseCase,
+        [FromRoute] int id
+    )
+    {
+        return Ok(await userUseCase.DeleteUser(id));
+    }
 }
