@@ -10,5 +10,6 @@ public interface IUserUserCase
     public Task<ResponseUserRequested> FindUser(int id);
     public Task<int> CountUsers(string? search);
     Task<ResponseUserGenerated> RegisterUser(RequestRegisterUser dto);
-    Task<object?> UpdateUser(RequestUpdateUser dto);
+    Task<ResponseUserRequested> UpdateUser(RequestUpdateUser dto);
+    Task<ResponseUserRequested> DeleteUser(int id);
 }

@@ -134,7 +134,7 @@ public class UserUseCase : IUserUserCase
         }
     }
 
-    public async Task<object?> UpdateUser(RequestUpdateUser dto)
+    public async Task<ResponseUserRequested> UpdateUser(RequestUpdateUser dto)
     {
         _writeRepository.BeginTransaction();
         try
@@ -170,5 +170,10 @@ public class UserUseCase : IUserUserCase
             _writeRepository.RollbackTransaction();
             throw new Exception($"Error updating user: {e.Message}");
         }
+    }
+
+    public async Task<ResponseUserRequested> DeleteUser(int id)
+    {
+        return new ResponseUserRequested(await _writeRepository.Delete(id));
     }
 }

@@ -76,4 +76,14 @@ public class UserController : ControllerBase
     {
         return Ok(await userUseCase.UpdateUser(dto));
     }
+    
+    [HttpDelete("deltete/{id}")]
+    [ProducesResponseType(typeof(ResponseUserRequested), StatusCodes.Status200OK)]
+    public async Task<IActionResult> DeleteUser(
+        [FromServices] IUserUserCase userUseCase,
+        [FromRoute] int id
+    )
+    {
+        return Ok(await userUseCase.DeleteUser(id));
+    }
 }
