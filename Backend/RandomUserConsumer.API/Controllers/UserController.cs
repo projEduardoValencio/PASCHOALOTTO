@@ -24,8 +24,17 @@ public class UserController : ControllerBase
     {
         return Ok(await userUseCase.GenerateUser());
     }
+    
+    [HttpGet("find/{id}")]
+    [ProducesResponseType(typeof(ResponseUserRequested), StatusCodes.Status200OK)]
+    public async Task<IActionResult> FindUser(
+        [FromServices] IUserUserCase userUseCase,
+        [FromRoute] int id
+    )
+    {
+        return Ok(await userUseCase.FindUser(id));
+    }
 
-    #region User List Request
     [HttpGet("list/{page}")]
     [ProducesResponseType(typeof(List<ResponseUserList>), StatusCodes.Status200OK)]
     [ProducesErrorResponseType(typeof(String))]
@@ -47,9 +56,7 @@ public class UserController : ControllerBase
         
         return Ok(result);
     }
-    #endregion
 
-    #region Register User Request
     [HttpPost("register")]
     [ProducesResponseType(typeof(ResponseUserGenerated), StatusCodes.Status201Created)]
     public async Task<IActionResult> RegisterUser(
@@ -59,5 +66,4 @@ public class UserController : ControllerBase
     {
         return Ok(await userUseCase.RegisterUser(dto));
     }
-    #endregion
 }

@@ -1,0 +1,19 @@
+@import "styles";
+
+.paschoalotto-footer{
+  @apply flex flex-row justify-center items-center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: $footer-height;
+  padding: 8px 10px;
+  background: $secondary-background-color;
+  color: $secondary-font-color;
+}
+
+.passchoalotto-footer-inner{
+  background: inherit;
+  @apply flex flex-row justify-center items-center w-full h-full text-center text-xs;
+  border: solid #121214 1px;
+}

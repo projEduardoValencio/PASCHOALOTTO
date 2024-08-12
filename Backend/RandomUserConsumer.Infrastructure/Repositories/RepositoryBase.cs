@@ -48,7 +48,7 @@ public abstract class RepositoryBase<T, IT> : IWriteOnly<T, IT>, IReadOnly<T, IT
         return entity;
     }
 
-    public async Task<T> Find(IT id)
+    public virtual async Task<T> Find(IT id)
     {
         T entity = await _dbSet.FindAsync(id);
 

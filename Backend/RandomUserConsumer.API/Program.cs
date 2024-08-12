@@ -20,7 +20,20 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnCh
 builder.Services.AddApplicationServcices();
 builder.Services.AddInfrastructureServices(Env.DatabaseEnvLoad(builder.Environment));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
+
 var app = builder.Build();
+
+app.UseCors("AllowSpecificOrigin");
 
 app.UseSwagger();
 app.UseSwaggerUI();

@@ -83,6 +83,11 @@ public class UserUseCase : IUserUserCase
         }
     }
 
+    public async Task<ResponseUserRequested> FindUser(int id)
+    {
+        return new ResponseUserRequested(await _readOnlyRepository.Find(id));
+    }
+
     public async Task<int> CountUsers(string? search)
     {
         return await _readOnlyRepository.Count(search);

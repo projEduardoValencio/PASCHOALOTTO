@@ -1,0 +1,17 @@
+@import "styles";
+
+.user-card-container{
+  @apply
+    w-1/2 flex flex-row h-20
+    rounded-md
+
+    max-xl:w-3/4
+    max-md:w-full
+  ;
+
+  border: solid $secondary-background-color 1px;
+}
+
+.user-logo{
+  @apply w-24
+}

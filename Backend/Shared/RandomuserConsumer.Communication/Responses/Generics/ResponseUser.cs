@@ -15,6 +15,7 @@ public class ResponseUser
     public string PictureUrl { get; set; } = string.Empty;
 
     public ResponseAddress Address { get; set; }
+    public ContactResponse Contact { get; set; }
     
     public ResponseUser(RandomUserConsumer.Domain.Entities.User user)
     {
@@ -29,5 +30,6 @@ public class ResponseUser
     public ResponseUser(RandomUserConsumer.Domain.Entities.User user, Address address) : this(user)
     {
         Address = new ResponseAddress(address);
+        Contact = new ContactResponse(user.Contact);
     }
 }
