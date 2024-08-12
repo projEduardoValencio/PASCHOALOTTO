@@ -24,3 +24,8 @@ html, body{
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.main-component{
+  @apply flex flex-row justify-center w-full overflow-auto;
+  max-height: calc(100% - $footer-height);
+}

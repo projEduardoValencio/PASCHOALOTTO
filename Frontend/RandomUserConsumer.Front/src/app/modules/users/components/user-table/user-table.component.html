@@ -21,7 +21,7 @@
          <td class="max-sm:hidden">{{getAge(user.birthday)}}</td>
          <td class="gap-2">
            <button (click)="goToUserDetail(user)"><mat-icon fontIcon="info"/></button>
-           <button><mat-icon fontIcon="edit"/></button>
+           <button (click)="goToUserEdit(user)"><mat-icon fontIcon="edit"/></button>
            <button><mat-icon fontIcon="delete"/></button>
          </td>
        </tr>

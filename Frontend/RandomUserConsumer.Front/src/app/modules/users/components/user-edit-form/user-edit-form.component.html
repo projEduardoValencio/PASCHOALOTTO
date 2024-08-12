@@ -1,0 +1,111 @@
+<form class="user-form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+  <div class="flex flex-row justify-center">
+    <img class="rounded-full" [src]="getImageUrl()">
+  </div>
+
+  <div class="form-group">
+    <label for="pictureUrl">Picture URL:</label>
+    <input id="pictureUrl" formControlName="pictureUrl" type="text" />
+  </div>
+
+  <div class="flex flex-row w-full gap-3">
+    <div class="flex flex-col w-full">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input id="name" formControlName="name" type="text" />
+      </div>
+
+      <div class="form-group">
+        <label for="birthday">Birthday:</label>
+        <input id="birthday" formControlName="birthday" type="date" />
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <input id="gender" formControlName="gender" type="text" />
+      </div>
+
+      <div class="form-group">
+        <label for="nationality">Nationality:</label>
+        <input id="nationality" formControlName="nationality" type="text" />
+      </div>
+    </div>
+
+    <div class="flex flex-col w-full" formGroupName="account">
+      <div formGroupName="login">
+        <div class="form-group">
+          <label for="uuid">UUID:</label>
+          <input id="uuid" formControlName="uuid" type="text" />
+        </div>
+
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input id="username" formControlName="username" type="text" />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input id="password" formControlName="password" type="text" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="registrationDate">Registration Date:</label>
+        <input id="registrationDate" formControlName="registrationDate" type="date" />
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-row w-full gap-3">
+    <div class="flex flex-col w-full" formGroupName="contact">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input id="email" formControlName="email" type="email" />
+      </div>
+
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number:</label>
+        <input id="phoneNumber" formControlName="phoneNumber" type="text" />
+      </div>
+
+      <div class="form-group">
+        <label for="cellPhone">Cell Phone:</label>
+        <input id="cellPhone" formControlName="cellPhone" type="text" />
+      </div>
+    </div>
+
+    <div class="flex flex-col w-full" formGroupName="address">
+      <div class="form-group">
+        <label for="street">Street:</label>
+        <input id="street" formControlName="street" type="text" />
+      </div>
+
+      <div class="form-group">
+        <label for="number">Number:</label>
+        <input id="number" formControlName="number" type="number" />
+      </div>
+
+      <div class="form-group">
+        <label for="city">City:</label>
+        <input id="city" formControlName="city" type="text" />
+      </div>
+
+      <div class="form-group">
+        <label for="state">State:</label>
+        <input id="state" formControlName="state" type="text" />
+      </div>
+
+      <div class="form-group">
+        <label for="zipCode">Zip Code:</label>
+        <input id="zipCode" formControlName="zipCode" type="text" />
+      </div>
+
+      <div class="form-group">
+        <label for="country">Country:</label>
+        <input id="country" formControlName="country" type="text" />
+      </div>
+    </div>
+  </div>
+  <button type="submit" [disabled]="userForm.invalid">Submit</button>
+</form>

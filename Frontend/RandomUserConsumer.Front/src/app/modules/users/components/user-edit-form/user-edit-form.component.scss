@@ -1,0 +1,24 @@
+@import "styles";
+
+form{
+  @apply px-10 py-3 rounded-3xl h-auto;
+  background: #333333;
+}
+
+form input{
+  @apply flex flex-col
+}
+
+form label{
+  @apply text-xs
+}
+
+form input{
+  @apply w-full rounded px-1;
+  color: $primary-font-color;
+  background: $primary-background-color
+}
+
+.user-form{
+  @apply flex-col w-1/2
+}

@@ -52,10 +52,6 @@ export class UserTableComponent {
   teste(){
     console.log('Test');
   }
-  goToUserDetail(user:IResponseUserItem){
-    console.log('User clicked:', user); // Ajuste o console.log para mostrar os dados do usuário clicado
-    this.router.navigate(['/user/detail', user.id]); // Ajuste o path
-  }
 
   // ngOnInit(): void {
   //   this.userService.getUsers().subscribe(
@@ -70,4 +66,13 @@ export class UserTableComponent {
   //     }
   //   );
   // }
+
+  goToUserDetail(user:IResponseUserItem){
+    this.router.navigate(['/user/detail', user.id]); // Ajuste o path
+  }
+
+  goToUserEdit(user: IResponseUserItem) {
+    console.log("aQUIJKJKw")
+    this.router.navigate(['/user/edit', user.id]); // Ajuste o path
+  }
 }
