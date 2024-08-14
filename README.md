@@ -21,7 +21,7 @@ Random User API Consumer <br/> Teste Técnico
 ---
 
 [Applicação](http://paschoalotto.eduardovalencio.site:4200) foi hospeada na AWS e esta a disposição para testes.
-[http://paschoalotto.eduardovalencio.site:4200](http://paschoalotto.eduardovalencio.site:4200)
+[http://paschoalotto.eduardovalencio.site:4200](http://paschoalotto.eduardovalencio.site:4200)\
 [http://3.131.36.84:4200](http://3.131.36.84:4200) - Endereço Alternativo
 
 ---
